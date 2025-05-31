@@ -13,15 +13,15 @@ export class PrismaUserRepository implements UserRepository  {
     }
 
     async findById(id: string): Promise<User | null> {
-        return this.prisma.user.findUnique({ where: { id } });
+        return await this.prisma.user.findUnique({ where: { id } });
     }
 z
     async findByEmail(email: string): Promise<User | null> {
-        return this.prisma.user.findUnique({ where: { email } });
+        return await this.prisma.user.findUnique({ where: { email } });
     }
 
     async update(user: User): Promise<User> {
-        return this.prisma.user.update({
+        return await this.prisma.user.update({
             where: { id: user.getId() },
             data: {
                 name: user.getName(),
@@ -37,5 +37,28 @@ z
     async delete(id: string): Promise<void> {
         await this.prisma.user.delete({ where: { id } });
     }
+
+    async findAll(): Promise<User[]> {
+        return await this.prisma.user.findMany();
+    }
+
+    async findByGroupId(groupId: string): Promise<User[]> {
+        return await this.prisma.user.findMany({ where: { groupId } });
+    }
+
+    async addCoins(userId: string, coins: number): Promise<User> {
+        return await this.prisma.user.update({
+            where: { id: userId },
+            data: { coins: { increment: coins } },
+        });
+    }
+    async removeCoins(userId: string, coins: number): Promise<User> {
+        return await this.prisma.user.update({
+            where: { id: userId },
+            data: { coins: { decrement: coins } },
+        });
+    }
+
+    
 
 }
