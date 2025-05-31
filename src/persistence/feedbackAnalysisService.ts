@@ -25,7 +25,7 @@ export class FeedbackAnalysisService {
               'Em formato json devolva uma {pontuação} de 0 a 100 balanceando os feedbacks positivos e negativos\n' +
               'um {sentimento geral}, baseado na pontuação geral\n' +
               '{sugestoes}, devolver 3 sugestoes curtas\n' +
-              '{menções}, devolver 3 maiores menções que voce faz para outros usuarios, com o {numero de menções}\n' +
+              '{menções}, devolver 3 maiores menções que voce faz para outros usuarios, utilizando o @, com o {numero de menções}\n' +
               'qual {hashtag} mais usou e a {quantidade hashtag} de vezes que usou\n' +
               'Quero apenas o formato json formatado para que eu consigo utilizar no meu sistema,faça um json puro, sem usar nehum outro tipo de texto, não use , devolva o seguinte: {score: 0 a 100, feeling: "positivo" ou "negativo", ' +
               'suggests: ["suggests 1", "suggests 2", "suggests 3"], mention: ["mention 1", "mention 2", "mention 3"], num_mentions: ["num1, num2, num3"], hashtag: "hashtag", num_hashtag: "quantidade hashtag"}'
