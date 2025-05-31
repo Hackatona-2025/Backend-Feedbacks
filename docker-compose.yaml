@@ -1,0 +1,18 @@
+# docker-compose.yml
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-nest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: feedbacks
+    ports:
+      - "5432:5432"
+    # --- opcional: persistência de dados em volume local ---
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
+    driver: local
