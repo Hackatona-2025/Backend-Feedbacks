@@ -1,7 +1,7 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { FeedbackAnalysisService } from '../services/feedback-analysis.service';
 
-@Controller('api/feedback-analysis')
+@Controller('api/user/feedback-analysis')
 export class FeedbackAnalysisController {
     constructor(private readonly feedbackAnalysisService: FeedbackAnalysisService) {}
 
