@@ -39,7 +39,7 @@ export class ReactionController {
     }
   }
 
-  @Get('/all')
+  @Post('/all')
   async findAll() {
     try {
       const reactions = await this.reactionUseCase.findAll()

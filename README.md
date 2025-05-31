@@ -20,7 +20,9 @@ Principais recursos:
 - Sistema de pontos e resgate de prêmios
 - Controle de permissões (usuário normal, usuário gestor)
 - Moderação de feedbacks públicos via denúncias
-- Análise de feedbacks de usuário com IA
+- Análise de feedbacks de usuário com Llama 3.3
+- API da OpenAI para mandar requisições para o Llama pelo Groq
+- Groq 
 
 ---
 
@@ -31,6 +33,7 @@ Principais recursos:
 - Prisma - Object relational model, facilitando integração com o banco de dados
 - Docker para ambiente padronizado
 - Groq e Llama AI - para análise dos feedbacks
+- Postman - para testes de API
 
 ---
 
@@ -64,14 +67,52 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## 📚 Documentação
+---
 
-- Documentação da API com Swagger: [http://localhost:3000/api](http://localhost:3000/api)
-- Rotas principais:
-  - **/auth** → login e cadastro
-  - **/feedbacks** → criação e visualização de feedbacks
-  - **/reactions** → reações em feedbacks
-  - **/groups** → grupos e subgrupos
+## 📌 Endpoints principais
+
+### Usuários (`/users`)
+- POST `/users` – Criar usuário
+- POST `/users/all` – Listar todos usuários
+- GET `/users/email/:email` – Buscar usuário por e-mail
+- PATCH `/users` – Atualizar usuário
+- GET `/users/group/:groupId` – Listar usuários de um grupo
+- GET `/users/:id` – Buscar usuário por ID
+- DELETE `/users/:id` – Deletar usuário por ID
+- POST `/users/login` – Login
+
+### Feedbacks (`/feedbacks`)
+- POST `/feedbacks` – Criar feedback
+- GET `/feedbacks/all` – Listar todos feedbacks
+- PATCH `/feedbacks` – Atualizar feedback
+- GET `/feedbacks/id/:id` – Buscar feedback por ID
+- DELETE `/feedbacks/id/:id` – Deletar feedback
+- GET `/feedbacks/group/:groupId` – Buscar feedbacks por grupo
+- GET `/feedbacks/author/:authorId` – Buscar feedbacks por autor
+
+### Reações (`/reactions`)
+- POST `/reactions` – Criar reação
+- GET `/reactions/all` – Listar todas reações
+- PATCH `/reactions` – Atualizar reação
+- GET `/reactions/:id` – Buscar reação por ID
+- DELETE `/reactions/id/:id` – Deletar reação
+- GET `/reactions/user/:userId` – Buscar reações por usuário
+- GET `/reactions/feedback/:feedbackId` – Buscar reações por feedback
+
+### Produtos (`/products`)
+- POST `/products` – Criar produto
+- GET `/products/all` – Listar todos produtos
+- GET `/products/:id` – Buscar produto por ID
+- DELETE `/products/id/:id` – Deletar produto
+- GET `/products/user/:userId` – Buscar produtos por usuário
+
+### Grupos (`/groups`)
+- POST `/groups` – Criar grupo
+- POST `/groups/all` – Listar todos grupos
+- PATCH `/groups` – Atualizar grupo
+- DELETE `/groups/id/:id` – Deletar grupo
+- GET `/groups/id/:id` – Buscar grupo por ID
+- GET `/groups/parent/:parentId` – Buscar subgrupos por ID do pai
 
 ---
 
@@ -92,7 +133,6 @@ src/
 │   ├── mappers/      # Conversores entre entidades de domínio e dados persistidos
 │   └── repositories/ # Implementações dos repositórios
 ├── prisma/           # Schema do Prisma e migrações
-├── common/           # Middlewares, pipes, filtros globais, etc.
 ├── main.ts           # Bootstrap da aplicação NestJS
 ```
 
@@ -109,7 +149,7 @@ src/
 ✅ Limites diários de feedbacks  
 ✅ Feed público e feed privado ("Só para você")  
 ✅ Pontuação acumulada e resgate de prêmios na loja  
-✅ Feedbacks anônimos ou identificados
+✅ Feedbacks anônimos ou identificados  
 ✅ Moderação por denúncias em feedbacks públicos  
 ✅ Controle de permissão para feedbacks privados (gestores e roles específicas)
 
