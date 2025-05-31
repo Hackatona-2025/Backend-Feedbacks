@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Reaction } from '../reaction';
+import { Reaction } from '../entities/reaction';
 
 @Injectable()
 export abstract class ReactionRepository {

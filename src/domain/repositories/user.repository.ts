@@ -10,4 +10,6 @@ export abstract class UserRepository {
     abstract update(user: User): Promise<User>
     abstract findByGroupId(groupId: string): Promise<User[]>
     abstract delete(id: string): Promise<void>
+    abstract addCoins(userId: string, coins: number): Promise<User>
+    abstract removeCoins(userId: string, coins: number): Promise<User>
 }
