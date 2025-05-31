@@ -1,26 +1,42 @@
 import { Injectable } from "@nestjs/common";
 import { Group } from "src/domain/entities/group";
 import { GroupRepository } from "src/domain/repositories/group.repository";
+import { PrismaService } from "src/persistence/config/prisma-service";
 
 @Injectable()
-export class GroupRepositoryImpl implements GroupRepository {
-    findAll(): Promise<Group[]> {
-        
+export class PrismaGroupRepository implements GroupRepository {
+    constructor(private readonly prisma: PrismaService) {}
+    async findAll(): Promise<Group[]> {
+        return await this.prisma.group.findMany();
     }
-    findAllByParentId(parentId: string): Promise<Group[]> {
-
+    async findAllByParentId(parentId: string): Promise<Group[]> {
+        return await this.prisma.group.findMany({
+            where: {
+                parentId: parentId
+            }
+        });
     }
-    findById(id: string): Promise<Group> {
-        
+    async findById(id: string): Promise<Group> {
+        return await this.prisma.group.findUnique({
+            where: {id: id}});
     }
-    create(group: Group): Promise<Group> {
-        
+    async create(group: Group): Promise<Group> {
+        return await this.prisma.group.create({data: group});
     }
-    update(group: Group): Promise<Group> {
-        
+    async update(group: Group): Promise<Group> {
+        return await this.prisma.group.update({
+            where: {
+                id: group.id
+            },
+            data: group
+        });
     }
-    delete(id: string): Promise<void> {
-        
+    async delete(id: string): Promise<void> {
+        return await this.prisma.group.delete({
+            where: {
+                id: id
+            }
+        });
     }
 
 }
