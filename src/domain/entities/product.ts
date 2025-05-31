@@ -26,55 +26,55 @@ export class Product {
         this.userId = product.userId;
     }
 
-    getId(): string {
+    public getId(): string {
         return this.id;
     }
 
-    setId(id: string): void {
+    public setId(id: string): void {
         this.id = id;
     }
 
-    getName(): string {
+    public getName(): string {
         return this.name;
     }
 
-    setName(name: string): void {
+    public setName(name: string): void {
         this.name = name;
     }
 
-    getDescription(): string {
+    public getDescription(): string {
         return this.description;
     }
 
-    setDescription(description: string): void {
+    public setDescription(description: string): void {
         this.description = description;
     }
 
-    getImage(): string | undefined {
+    public getImage(): string | undefined {
         return this.image;
     }
 
-    setImage(image: string | undefined): void {
+    public setImage(image: string | undefined): void {
         this.image = image;
     }
 
-    getCost(): number {
+    public getCost(): number {
         return this.cost;
     }
 
-    setCost(cost: number): void {
+    public setCost(cost: number): void {
         this.cost = cost;
     }
 
-    getUserId(): string {
+    public getUserId(): string {
         return this.userId;
     }
 
-    setUserId(userId: string): void {
+    public setUserId(userId: string): void {
         this.userId = userId;
     }
 
-    toJson() {
+    public toJson() {
         return {
             id: this.id,
             name: this.name,
