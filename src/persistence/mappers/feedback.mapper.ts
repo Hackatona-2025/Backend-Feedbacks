@@ -16,9 +16,6 @@ export class FeedbackMapper {
         return mapper;
     }
 
-
-
-
     static toPrisma(feedback: Feedback): PrismaFeedback {
         return {
             id: feedback.getId(),
