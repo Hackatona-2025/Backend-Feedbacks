@@ -1,3 +1,4 @@
+import { Prisma } from "generated/prisma";
 import { Reaction, ReactionType } from "src/domain/entities/reaction";
 
 export class ReactionMapper {
@@ -6,16 +7,15 @@ export class ReactionMapper {
             feedbackId: prismaReaction.feedbackId,
             userId: prismaReaction.userId,
             type: prismaReaction.type as ReactionType
-        }, prismaReaction.id);
+        }, prismaReaction.id).createdAt = prismaReaction.createdAt;
     }
 
-    static toPrisma(reaction: Reaction): any {
+    static toPrisma(reaction: Reaction): Prisma.ReactionCreateInput {
         return {
-            id: reaction.getId(),
-            feedbackId: reaction.getFeedbackId(),
-            userId: reaction.getUserId(),
             type: reaction.getType(),
-            createdAt: reaction.getCreatedAt()
+            createdAt: reaction.getCreatedAt(),
+            feedback: { connect: { id: reaction.feedbackId } },
+            user: { connect: { id: reaction.userId } },
         };
     }
 }

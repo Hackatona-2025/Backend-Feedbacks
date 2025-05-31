@@ -8,17 +8,17 @@ export class ProductMapper {
             description: prismaProduct.description || "",
             image: prismaProduct.image || undefined,
             cost: prismaProduct.cost,
-            userId: prismaProduct.userId
+            userId: prismaProduct.id
         }, prismaProduct.id);
     }
 
     static toPrisma(product: Product): PrismaProduct{
         return {
             name: product.getName(),
+            id: product.getUserId(),
             description: product.getDescription(),
-            image: product.getImage() ?? undefined,
+            image: product.getImage() || null,
             cost: product.getCost(),
-            Id: product.getUserId()
         };
     }
 }

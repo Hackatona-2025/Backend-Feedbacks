@@ -13,20 +13,20 @@ export class Group {
   id: string;
   name: string;
   level: number;
-  parentId : string
+  parentId: string | undefined;
 
   constructor(group: GroupInterface, id?: string) {
     this.id = id || createId();
     this.name = group.name;
     this.level = group.level;
-    this.parentId = group.parentId;
+    this.parentId = group.parentId ?? undefined;
   }
 
-  publicgetId(): string {
+  public getId(): string {
     return this.id;
   }
 
-  publicsetId(value: string) {
+  public setId(value: string) {
     this.id = value;
   }
 
