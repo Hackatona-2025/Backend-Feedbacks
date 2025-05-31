@@ -10,26 +10,35 @@ export class PrismaProductRepository implements ProductRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async create(product: Product): Promise<Product> {
-        return await this.prisma.product.create({
-            data: ProductMapper.toPrisma(product),
+        const prismaProduct = ProductMapper.toPrisma(product);
+        const createdProduct = await this.prisma.product.create({
+            data: prismaProduct,
         });
+        return ProductMapper.toDomain(createdProduct);
     }
 
     async findById(id: string): Promise<Product | null> {
-        return await this.prisma.product.findUnique({
+        const product = await this.prisma.product.findUnique({
             where: { id },
         });
+        if (!product) {
+            return null;
+        }
+        return ProductMapper.toDomain(product);
     }
 
     async findAll(): Promise<Product[]> {
-        return await this.prisma.product.findMany();
+        const products = await this.prisma.product.findMany();
+        return products.map(product => ProductMapper.toDomain(product));
     }
 
     async update(id: string, product: Product): Promise<Product> {
-        return await this.prisma.product.update({
+        const prismaProduct = ProductMapper.toPrisma(product);
+        const updatedProduct = await this.prisma.product.update({
             where: { id },
-            data: ProductMapper.toPrisma(product),
+            data: prismaProduct,
         });
+        return ProductMapper.toDomain(updatedProduct);
     }
 
     async delete(id: string): Promise<void> {
@@ -38,10 +47,4 @@ export class PrismaProductRepository implements ProductRepository {
         });
     }
 
-    async findByUserId(userId: string): Promise<Product[]> {
-        return await this.prisma.product.findMany({
-            where: { userId },
-        });
-    }
-    
 }

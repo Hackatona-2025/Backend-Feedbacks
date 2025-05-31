@@ -1,5 +1,4 @@
 import { Injectable } from "@nestjs/common";
-import { group } from "console";
 import { Group } from "src/domain/entities/group";
 import { GroupRepository } from "src/domain/repositories/group.repository";
 import { PrismaService } from "src/persistence/config/prisma-service";

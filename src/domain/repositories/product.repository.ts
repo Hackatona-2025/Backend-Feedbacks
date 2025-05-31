@@ -1,6 +1,5 @@
 
 import { Product } from '../entities/product';
-import { Injectable } from '@nestjs/common';
 
 
 export abstract class ProductRepository {
@@ -9,5 +8,4 @@ export abstract class ProductRepository {
     abstract findAll(): Promise<Product[]>;
     abstract update(id: string, product: Product): Promise<Product>;
     abstract delete(id: string): Promise<void>;
-    abstract findByUserId(userId: string): Promise<Product[]>;
 } 
