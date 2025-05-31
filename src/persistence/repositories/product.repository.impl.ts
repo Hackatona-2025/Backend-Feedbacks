@@ -9,38 +9,32 @@ export class PrismaProductRepository implements ProductRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async create(product: Product): Promise<Product> {
-        return await this.prisma.product.create({
-            data: product,
-        });
+        // implementation here
+        return {} as Product;
     }
 
     async findById(id: string): Promise<Product | null> {
-        return await this.prisma.product.findUnique({
-            where: { id },
-        });
+        // implementation here
+        return null;
     }
 
     async findAll(): Promise<Product[]> {
-        return await this.prisma.product.findMany();
+        // implementation here
+        return [];
     }
 
     async update(id: string, product: Product): Promise<Product> {
-        return await this.prisma.product.update({
-            where: { id },
-            data: product,
-        });
+        // implementation here
+        return {} as Product;
     }
 
     async delete(id: string): Promise<void> {
-        await this.prisma.product.delete({
-            where: { id },
-        });
+        // implementation here
     }
 
     async findByUserId(userId: string): Promise<Product[]> {
-        return await this.prisma.product.findMany({
-            where: { userId },
-        });
+        // implementation here
+        return [];
     }
     
 }
