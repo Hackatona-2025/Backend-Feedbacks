@@ -1,4 +1,7 @@
-import { Product } from "../entities/product";
+
+import { Product } from '../entities/product';
+import { Injectable } from '@nestjs/common';
+
 
 export abstract class ProductRepository {
     abstract create(product: Product): Promise<Product>;

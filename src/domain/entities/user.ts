@@ -27,6 +27,7 @@ export class User {
     coins: number = 0;
     role: Role = Role.USER;
     
+    
     constructor(user: UserInterface, id?: string){
         this.id = id || createId();
         this.name = user.name;
