@@ -39,7 +39,7 @@ export class FeedbackController {
     }
   }
 
-  @Get('/all')
+  @Post('/all')
   async findAll() {
     try {
       const feedbacks = await this.feedbackUseCase.findAll()

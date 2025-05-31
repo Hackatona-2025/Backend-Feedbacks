@@ -38,7 +38,7 @@ export class ProductController {
     }
   }
 
-  @Get('/all')
+  @Post('/all')
   async findAll() {
     try {
       const products = await this.productUseCase.getAllProducts()

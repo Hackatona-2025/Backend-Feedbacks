@@ -27,7 +27,7 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
     }
 
     async findAll(): Promise<Feedback[]> {
-        const feedbacks = await this.prisma.feedback.findMany();
+        const feedbacks: any[] = await this.prisma.feedback.findMany();
         return feedbacks.map(feedback => FeedbackMapper.toDomain(feedback));
     }
 
