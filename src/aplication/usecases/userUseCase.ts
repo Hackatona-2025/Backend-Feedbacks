@@ -64,4 +64,18 @@ export class UserUseCase {
         return this.userRepository.delete(id);
     }
     
+    async login(email: string, password: string): Promise<User> {
+        if (!email) {
+            throw new Error("Email is required for login");
+        }
+        if(await this.userRepository.findByEmail(email)) {
+            const user = await this.userRepository.findByEmail(email);
+            if (user && user.password === password) {
+                return user;
+            } else {
+                throw new Error("Invalid email or password");
+            }
+        }
+        throw new Error("Invalid email or password");
+    }
 }

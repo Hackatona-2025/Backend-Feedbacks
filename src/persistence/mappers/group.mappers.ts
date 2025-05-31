@@ -12,8 +12,8 @@ export class GroupMapper {
     }
     static toPrisma(group: Group): PrismaGroup {
         return {
-            name: group.getName(),
             id: group.id,
+            name: group.getName(),
             level: group.getLevel(),
             parentId: group.getParentId() ?? null
         };

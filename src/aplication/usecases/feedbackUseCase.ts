@@ -70,5 +70,5 @@ export class FeedbackUseCase {
         }
         return await this.feedbackRepository.findByAuthorId(authorId);
     }
-
+    
 }

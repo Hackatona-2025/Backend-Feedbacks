@@ -94,4 +94,14 @@ export class UserController {
     }
   }
 
+  @Post('/login')
+  async login(@Body() body: { email: string, password: string }) {
+    try {
+      const user = await this.userUseCase.login(body.email, body.password)
+      return { statusCode: 200, data: user }
+    } catch (error) {
+      return { statusCode: 401, message: error.message }
+    }
+  }
+
 }

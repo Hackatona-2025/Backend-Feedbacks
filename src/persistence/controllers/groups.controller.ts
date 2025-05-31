@@ -39,7 +39,7 @@ export class GroupController {
     }
   }
 
-  @Get('/all')
+  @Post('/all')
   async findAll() {
     try {
       const groups = await this.groupUseCase.findAll()
