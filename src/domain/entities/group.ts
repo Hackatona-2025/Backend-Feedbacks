@@ -3,18 +3,17 @@ import { createId } from "@paralleldrive/cuid2"
 
 
 interface GroupInterface {
-  id: string;
   name: string;
   level: number;
-  parentId: string;
+  parentId?: string;
 }
 
 
-export class Group implements GroupInterface {
+export class Group {
   id: string;
   name: string;
   level: number;
-  parentId: string;
+  parentId : string
 
   constructor(group: GroupInterface, id?: string) {
     this.id = id || createId();
@@ -23,40 +22,40 @@ export class Group implements GroupInterface {
     this.parentId = group.parentId;
   }
 
-  getId(): string {
+  publicgetId(): string {
     return this.id;
   }
 
-  setId(value: string) {
+  publicsetId(value: string) {
     this.id = value;
   }
 
-  getName(): string {
+  public getName(): string {
     return this.name;
   }
 
-  setName(value: string) {
+  public setName(value: string) {
     this.name = value;
   }
 
-  getLevel(): number {
+  public getLevel(): number {
     return this.level;
   }
 
-  setLevel(value: number) {
+  public setLevel(value: number) {
     this.level = value;
   }
 
-  getParentId(): string {
+  public getParentId(): string {
     return this.parentId;
   }
 
-  setParentId(value: string) {
+  public setParentId(value: string) {
     this.parentId = value;
   }
 
 
-  toJSON() {
+  public toJSON() {
     return {
       id: this.id,
       name: this.name,
