@@ -4,7 +4,7 @@
 </p>
 
 <p align="center">
-  <b>Feedback Hub</b>: Sistema interno de feedbacks para empresas, com gamificação, rankings e prêmios.  
+  <b>Feedbackz</b>: Sistema interno de feedbacks para empresas, com gamificação, rankings e prêmios.  
   Construído com NestJS no backend.
 </p>
 
@@ -12,7 +12,7 @@
 
 ## 📦 Descrição
 
-Este é o backend do projeto **Feedback Hub** – uma plataforma para engajar colaboradores com feedbacks públicos e privados, reações por emoji e loja de prêmios.
+Este é o backend do projeto **Feedbackz** – uma plataforma para engajar colaboradores com feedbacks públicos e privados, reações por emoji e loja de prêmios.
 
 Principais recursos:
 - Feedbacks públicos e privados (visíveis apenas para o destinatário e autor)
@@ -29,7 +29,7 @@ Principais recursos:
 - PostgreSQL – banco de dados relacional
 - TypeORM ou Prisma (dependendo do setup final)
 - JWT – autenticação e autorização
-- Docker (opcional) para ambiente padronizado
+- Docker para ambiente padronizado
 
 ---
 
@@ -99,7 +99,7 @@ src/
 ✅ Pontuação acumulada e loja de prêmios  
 ✅ Feedbacks públicos anônimos ou identificados  
 ✅ Moderação por denúncias em feedbacks públicos  
-✅ Controle de permissão para feedbacks privados (gestores e roles específicos)
+✅ Controle de permissão para feedbacks privados (gestores e roles específicas)
 
 ---
 
