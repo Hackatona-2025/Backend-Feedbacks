@@ -67,10 +67,6 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## 📚 Documentação
-
-- Documentação da API com Swagger: [http://localhost:3000/api](http://localhost:3000/api)
-
 ---
 
 ## 📌 Endpoints principais
