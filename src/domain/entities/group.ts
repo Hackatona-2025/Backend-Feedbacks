@@ -1,15 +1,12 @@
-<<<<<<< HEAD
-import { User } from "./user";
-=======
+
 import { createId } from "@paralleldrive/cuid2"
->>>>>>> 80b221fd655df083b683123a5f2f2454f9f8b74f
+
 
 interface GroupInterface {
   id: string;
   name: string;
   level: number;
   parentId: string;
-  subGroups?: Group[];
 }
 
 
