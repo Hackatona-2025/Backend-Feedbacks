@@ -26,6 +26,7 @@ model User {
   role        Role       @default(USER)
   feedbacks   Feedback[] @relation("AuthorFeedbacks")
   reactions   Reaction[]
+
   products    Product[]
 }
 

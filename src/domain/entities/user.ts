@@ -13,7 +13,7 @@ interface UserInterface {
     name:       string
     email:      string
     password:   string
-    group ?:    Group
+    groupId :   string
 }
 
 
@@ -23,19 +23,16 @@ export class User {
     email: string;
     password: string;
     description: string = "";
-    group ?: Group;
+    groupId : string;
     coins: number = 0;
     role: Role = Role.USER;
-    feedbacks: Feedback[] = [];
-    reactions: Reaction[] = [];
-    products: Product[] = [];
-
+    
     constructor(user: UserInterface, id?: string){
         this.id = id || createId();
         this.name = user.name;
         this.email = user.email;
         this.password = user.password;
-        this.group = user.group;
+        this.groupId = user.groupId;
     }
 
     getId(): string {
@@ -78,13 +75,6 @@ export class User {
         this.description = description;
     }
 
-    getGroup(): Group | undefined {
-        return this.group;
-    }
-
-    setGroup(group: Group): void {
-        this.group = group;
-    }
 
     getCoins(): number {
         return this.coins;
@@ -102,29 +92,7 @@ export class User {
         this.role = role;
     }
 
-    getFeedbacks(): Feedback[] {
-        return this.feedbacks;
-    }
-
-    setFeedbacks(feedbacks: Feedback[]): void {
-        this.feedbacks = feedbacks;
-    }
-
-    getReactions(): Reaction[] {
-        return this.reactions;
-    }
-
-    setReactions(reactions: Reaction[]): void {
-        this.reactions = reactions;
-    }
-
-    getProducts(): Product[] {
-        return this.products;
-    }
-
-    setProducts(products: Product[]): void {
-        this.products = products;
-    }
+ 
 
     toJson() {
         return {
@@ -132,12 +100,9 @@ export class User {
             name: this.name,
             email: this.email,
             description: this.description,
-            group: this.group ? (typeof this.group === 'object' && 'toJson' in this.group ? this.group.toJson() : this.group) : undefined,
+            groupId: this.groupId,
             coins: this.coins,
             role: this.role,
-            feedbacks: this.feedbacks.map(fb => typeof fb === 'object' && 'toJson' in fb ? fb.toJson() : fb),
-            reactions: this.reactions.map(r => typeof r === 'object' && 'toJson' in r ? r.toJson() : r),
-            products: this.products.map(p => typeof p === 'object' && 'toJson' in p ? p.toJson() : p),
         };
     }
 }
