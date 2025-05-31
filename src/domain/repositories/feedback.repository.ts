@@ -10,4 +10,5 @@ export abstract class FeedbackRepository {
     abstract delete(id: string): Promise<void>
     abstract findByGroupId(groupId: string): Promise<Feedback[]>
     abstract findByAuthorId(authorId: string): Promise<Feedback[]>
+    abstract findByRecepentId(recepentId: string): Promise<Feedback[]>
 }

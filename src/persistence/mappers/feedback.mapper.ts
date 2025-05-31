@@ -24,6 +24,7 @@ export class FeedbackMapper {
             createdAt: feedback.getCreatedAt(),
             reportCount: feedback.getReportCount(),
             authorId: feedback.getAuthorId(),
+            recepentId: feedback.recepentId || null,
             groupId: feedback.getGroupId() || null,
             isAnonymous: feedback.isAnonymous,
         };

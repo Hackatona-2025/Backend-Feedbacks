@@ -27,7 +27,7 @@ export class ProductUseCase {
     }
 
     async getAllProducts(): Promise<Product[]> {
-        return this.productRepository.findAll();
+        return await this.productRepository.findAll();
     }
 
     async updateProduct(id: string, dto: Partial<createProductDto>): Promise<Product> {

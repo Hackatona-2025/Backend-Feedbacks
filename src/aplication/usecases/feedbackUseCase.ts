@@ -18,6 +18,7 @@ export class FeedbackUseCase {
             authorId: dto.authorId,
             groupId: dto.groupId,
             isAnonymous: dto.isAnonymous,
+            recepentId: dto.recepentId, 
         });
         return await this.feedbackRepository.create(feedback);
     }
@@ -69,6 +70,13 @@ export class FeedbackUseCase {
             throw new Error("Author ID is required");
         }
         return await this.feedbackRepository.findByAuthorId(authorId);
+    }
+
+    async findByRecepentId(recepentId: string): Promise<Feedback[]> {
+        if (!recepentId) {
+            throw new Error("Recepent ID is required");
+        }
+        return await this.feedbackRepository.findByRecepentId(recepentId);
     }
     
 }

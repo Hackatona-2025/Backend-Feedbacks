@@ -6,6 +6,7 @@ interface FeedbackInterface {
   authorId: string;
   groupId?: string;
   isAnonymous: boolean;
+  recepentId?: string;
 }
 
 export class Feedback {
@@ -15,6 +16,7 @@ export class Feedback {
   createdAt: Date;
   reportCount: number;
   authorId: string;
+  recepentId?: string; // Assuming this is for future use, if needed
   groupId?: string;
   isAnonymous: boolean;
   reactions: string[]; // Replace 'any' with your Reaction type if available
@@ -29,6 +31,7 @@ export class Feedback {
     this.groupId = feedback.groupId;
     this.isAnonymous = feedback.isAnonymous;
     this.reactions = [];
+    this.recepentId = feedback.recepentId; // Optional, can be undefined
   }
   
   getId(): string {

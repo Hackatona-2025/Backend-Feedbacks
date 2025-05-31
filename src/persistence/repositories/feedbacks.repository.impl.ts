@@ -59,4 +59,11 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
         });
         return feedbacks.map(feedback => FeedbackMapper.toDomain(feedback));
     }
+
+    async findByRecepentId(recepentId: string): Promise<Feedback[]> {
+        const feedbacks = await this.prisma.feedback.findMany({
+            where: { recepentId },
+        });
+        return feedbacks.map(feedback => FeedbackMapper.toDomain(feedback));
+    }
 }

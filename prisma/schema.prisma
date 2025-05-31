@@ -24,6 +24,8 @@ model User {
   // Um usuário pode criar vários feedbacks (AuthorFeedbacks)
   feedbacks   Feedback[]  @relation("AuthorFeedbacks")
 
+  feedbacksR   Feedback[]  @relation("RecepentFeedbacks")
+
   // Um usuário pode reagir a vários feedbacks
   reactions   Reaction[]
 
@@ -63,6 +65,9 @@ model Feedback {
   // Autor do feedback (AuthorFeedbacks)
   author      User        @relation("AuthorFeedbacks", fields: [authorId], references: [id])
   authorId    String
+
+  recepent    User?       @relation("RecepentFeedbacks",fields: [recepentId], references: [id])
+  recepentId  String?
 
   // Feedback opcionalmente associado a um grupo (GroupFeedbacks)
   group       Group?      @relation("GroupFeedbacks", fields: [groupId], references: [id])

@@ -4,4 +4,5 @@ export interface createFeedbackDto{
     authorId: string;
     groupId?: string;
     isAnonymous: boolean;
+    recepentId?: string;
 }
