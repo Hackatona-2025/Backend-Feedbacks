@@ -10,4 +10,12 @@ export class GroupMapper {
             parentId: group.parentId ?? undefined
         }, group.id);
     }
+    static toPrisma(group: Group): PrismaGroup {
+        return {
+            id: group.getId(),
+            name: group.getName(),
+            level: group.getLevel(),
+            parentId: group.getParentId() ?? null
+        };
+    }
 }

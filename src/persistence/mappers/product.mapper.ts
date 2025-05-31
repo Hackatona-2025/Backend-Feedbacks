@@ -12,13 +12,13 @@ export class ProductMapper {
         }, prismaProduct.id);
     }
 
-    static toPrisma(product: Product): PrismaProduct {
+    static toPrisma(product: Product): PrismaProduct{
         return {
             name: product.getName(),
             description: product.getDescription(),
-            image: product.getImage(),
+            image: product.getImage() ?? undefined,
             cost: product.getCost(),
-            userId: product.getUserId()
+            Id: product.getUserId()
         };
     }
 }

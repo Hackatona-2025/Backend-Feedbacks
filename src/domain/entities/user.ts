@@ -82,7 +82,7 @@ export class User {
         return this.coins;
     }
 
-    public setCoins(coins: number): void {
+    public setCoins(coins: number){
         this.coins = coins;
     }
 
