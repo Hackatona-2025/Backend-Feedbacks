@@ -9,26 +9,35 @@ export class PrismaReactionRepository implements ReactionRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async create(reaction: Reaction): Promise<Reaction> {
-        return await this.prisma.reaction.create({
-            data: ReactionMapper.toPrisma(reaction),
+        const prismaReaction = ReactionMapper.toPrisma(reaction);
+        const createdReaction = await this.prisma.reaction.create({
+            data: prismaReaction,
         });
+        return ReactionMapper.toDomain(createdReaction);
     }
 
     async findById(id: string): Promise<Reaction | null> {
-        return await this.prisma.reaction.findUnique({
+        const reaction = await this.prisma.reaction.findUnique({
             where: { id },
         });
+        if (!reaction) {
+            return null;
+        }
+        return ReactionMapper.toDomain(reaction);
     }
 
     async findAll(): Promise<Reaction[]> {
-        return await this.prisma.reaction.findMany();
+        const reactions = await this.prisma.reaction.findMany();
+        return reactions.map(reaction => ReactionMapper.toDomain(reaction));
     }
 
     async update(id: string, reaction: Reaction): Promise<Reaction> {
-        return await this.prisma.reaction.update({
+        const prismaReaction = ReactionMapper.toPrisma(reaction);
+        const updatedReaction = await this.prisma.reaction.update({
             where: { id },
-            data: ReactionMapper.toPrisma(reaction),
+            data: prismaReaction,
         });
+        return ReactionMapper.toDomain(updatedReaction);
     }
 
     async delete(id: string): Promise<void> {
@@ -37,15 +46,17 @@ export class PrismaReactionRepository implements ReactionRepository {
         });
     }
 
-    async findByFeedbackId(feedbackId: string): Promise<Reaction[]> { 
-        return await this.prisma.reaction.findMany({
+    async findByFeedbackId(feedbackId: string): Promise<Reaction[]> {
+        const reactions = await this.prisma.reaction.findMany({
             where: { feedbackId },
         });
+        return reactions.map(reaction => ReactionMapper.toDomain(reaction));
     }
 
     async findByUserId(userId: string): Promise<Reaction[]> {
-        return await this.prisma.reaction.findMany({
+        const reactions = await this.prisma.reaction.findMany({
             where: { userId },
         });
+        return reactions.map(reaction => ReactionMapper.toDomain(reaction));
     }
 }
