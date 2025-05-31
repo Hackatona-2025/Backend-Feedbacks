@@ -20,12 +20,13 @@ export class FeedbackAnalysisService {
                         role: 'system',
                         content:
                             'Você receberá uma lista de feedbacks (em ordem cronológica). \n' +
-                            'Sua tarefa é:\n' +
-                            'Identificar temas recorrentes e críticas frequentes nesses feedbacks.\n' +
-                            'Apontar os principais pontos em que a pessoa deve melhorar, com base nos comentários recebidos.\n' +
-                            'Seja objetivo, claro e direto, organizando a resposta em tópicos.\n' +
-                            'Se possível, destaque sugestões práticas de melhoria mencionadas pelos usuários.\n' +
-                            'Com base nesses feedbacks, gerar um balanco com uma nota média de 0 a 100',
+              'Sua tarefa é:\n' +
+              'Em formato json devolva uma {pontuação} de 0 a 100 balanceando os feedbacks positivos e negativos\n' +
+              'um {sentimento geral}, baseado na pontuação geral\n' +
+              '{sugestoes}, devolver 3 sugestoes curtas\n' +
+              '{menções}, devolver 3 maiores menções que voce faz para outros usuarios, com o {numero de menções}\n' +
+              'qual {hashtag} mais usou e a {quantidade hashtag} de vezes que usou\n' +
+              'Quero apenas o formato json formatado para que eu consigo utilizar no meu sistema, não utilize isso: ```, devolva o seguinte: {pontuação: 0 a 100, sentimento: "positivo" ou "negativo", sugestoes: ["sugestão 1", "sugestão 2", "sugestão 3"], menções: ["menção 1", "menção 2", "menção 3"],numero de menções: ["num1, num2, num3"], hashtag: "hashtag", quantidade hashtag: "quantidade hashtag"}'
                     },
                     {
                         role: 'user',

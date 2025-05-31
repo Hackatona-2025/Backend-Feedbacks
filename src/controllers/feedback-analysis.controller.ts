@@ -7,8 +7,10 @@ export class FeedbackAnalysisController {
 
     @Post()
     async analisarFeedbacks(
-        @Body() body: { feedbacks: string[] }
+        @Body() body: { feedbacks: string[] },
     ): Promise<string> {
-        return this.feedbackAnalysisService.analisarFeedbacks(body.feedbacks);
+      const cleanJson = (await this.feedbackAnalysisService.analisarFeedbacks(body.feedbacks)).replace(/^```[\s\S]*?\n/, '').replace(/\n```$/, '');
+      console.log(cleanJson);
+      return JSON.parse(cleanJson);
     }
 } 
