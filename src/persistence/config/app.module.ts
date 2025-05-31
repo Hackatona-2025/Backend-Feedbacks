@@ -17,39 +17,47 @@ import { FeedbackController } from 'src/persistence/controllers/feedback.control
 import { ReactionController } from 'src/persistence/controllers/reaction.controller';
 import { ProductController } from 'src/persistence/controllers/product.controller';
 import { GroupController } from 'src/persistence/controllers/groups.controller';
+import { FeedbackAnalysisService } from 'src/persistence/feedbackAnalysisService';
 
 @Module({
   imports: [],
-  controllers: [AppController, UserController,FeedbackController, ReactionController, ProductController, GroupController],
-  providers: [AppService, 
+  controllers: [
+    AppController, 
+    UserController,
+    FeedbackController, 
+    ReactionController, 
+    ProductController, 
+    GroupController
+  ],
+  providers: [
+    AppService, 
     FeedbackUseCase, 
     ReactionUseCase, 
     GroupUseCase, 
     UserUseCase, 
-    ProductUseCase, 
+    ProductUseCase,
+    FeedbackAnalysisService,
     PrismaService,
-  {
-    provide: 'UserRepository',
-    useClass: PrismaUserRepository,
-  },
-  {
-    provide: 'FeedbackRepository',
-    useClass: PrismaFeedbackRepository,
-  },
-  {
-    provide: 'ReactionRepository',
-    useClass: PrismaReactionRepository,
-  },
-  {
-    provide: 'GroupRepository',
-    useClass: PrismaGroupRepository,
-  },
-  {
-    provide: 'ProductRepository',
-    useClass: PrismaProductRepository,
-  }
-
-
-]
+    {
+      provide: 'UserRepository',
+      useClass: PrismaUserRepository,
+    },
+    {
+      provide: 'FeedbackRepository',
+      useClass: PrismaFeedbackRepository,
+    },
+    {
+      provide: 'ReactionRepository',
+      useClass: PrismaReactionRepository,
+    },
+    {
+      provide: 'GroupRepository',
+      useClass: PrismaGroupRepository,
+    },
+    {
+      provide: 'ProductRepository',
+      useClass: PrismaProductRepository,
+    }
+  ]
 })
 export class AppModule {}
