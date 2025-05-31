@@ -2,6 +2,7 @@ import { Injectable } from "@nestjs/common";
 import { Product } from "src/domain/entities/product";
 import { ProductRepository } from "src/domain/repositories/product.repository";
 import { PrismaService } from "src/persistence/config/prisma-service";
+import { ProductMapper } from "../mappers/product.mapper";
 
 @Injectable()
 export class PrismaProductRepository implements ProductRepository {
@@ -9,32 +10,38 @@ export class PrismaProductRepository implements ProductRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async create(product: Product): Promise<Product> {
-        // implementation here
-        return {} as Product;
+        return await this.prisma.product.create({
+            data: ProductMapper.toPrisma(product),
+        });
     }
 
     async findById(id: string): Promise<Product | null> {
-        // implementation here
-        return null;
+        return await this.prisma.product.findUnique({
+            where: { id },
+        });
     }
 
     async findAll(): Promise<Product[]> {
-        // implementation here
-        return [];
+        return await this.prisma.product.findMany();
     }
 
     async update(id: string, product: Product): Promise<Product> {
-        // implementation here
-        return {} as Product;
+        return await this.prisma.product.update({
+            where: { id },
+            data: ProductMapper.toPrisma(product),
+        });
     }
 
     async delete(id: string): Promise<void> {
-        // implementation here
+        await this.prisma.product.delete({
+            where: { id },
+        });
     }
 
     async findByUserId(userId: string): Promise<Product[]> {
-        // implementation here
-        return [];
+        return await this.prisma.product.findMany({
+            where: { userId },
+        });
     }
     
 }
