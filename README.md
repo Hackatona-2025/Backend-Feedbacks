@@ -47,7 +47,7 @@ No arquivo `.env`, configure as variáveis essenciais como:
 
 ```env
 DATABASE_URL=postgres://user:password@localhost:5432/feedbackhub
-BASE_URL = localhost ou remoto
+BASE_URL = http://localhost:3000 ou remoto
 JWT_SECRET=supertoken
 ```
 
