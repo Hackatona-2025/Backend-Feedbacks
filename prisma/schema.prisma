@@ -65,7 +65,7 @@ model Feedback {
 }
 
 model Reaction {
-  id         Int          @id @default(autoincrement())
+  id         String     @id @default(uuid())
   feedback   Feedback     @relation(fields: [feedbackId], references: [id])
   feedbackId String
   user       User         @relation(fields: [userId], references: [id])
