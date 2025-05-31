@@ -30,47 +30,47 @@ export class Reaction {
         this.createdAt = new Date();
     }
 
-    getId(): string {
+    public getId(): string {
         return this.id;
     }
 
-    setId(id: string): void {
+    public setId(id: string): void {
         this.id = id;
     }
 
-    getFeedbackId(): string {
+    public getFeedbackId(): string {
         return this.feedbackId;
     }
 
-    setFeedbackId(feedbackId: string): void {
+    public setFeedbackId(feedbackId: string): void {
         this.feedbackId = feedbackId;
     }
 
-    getUserId(): string {
+    public getUserId(): string {
         return this.userId;
     }
 
-    setUserId(userId: string): void {
+    public setUserId(userId: string): void {
         this.userId = userId;
     }
 
-    getType(): ReactionType {
+    public getType(): ReactionType {
         return this.type;
     }
 
-    setType(type: ReactionType): void {
+    public setType(type: ReactionType): void {
         this.type = type;
     }
 
-    getCreatedAt(): Date {
+    public getCreatedAt(): Date {
         return this.createdAt;
     }
 
-    setCreatedAt(createdAt: Date): void {
+    public setCreatedAt(createdAt: Date): void {
         this.createdAt = createdAt;
     }
 
-    toJson() {
+    public toJson() {
         return {
             id: this.id,
             feedbackId: this.feedbackId,
