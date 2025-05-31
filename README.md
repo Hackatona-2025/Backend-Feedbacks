@@ -30,9 +30,9 @@ Principais recursos:
 
 - NestJS – framework baseado em Node.js para construção de APIs
 - PostgreSQL – banco de dados relacional
-- Prisma 
+- Prisma - Object relational model, facilitando integração com o banco de dados
 - Docker para ambiente padronizado
-- Llama AI - para análise dos feedbacks
+- Groq e Llama AI - para análise dos feedbacks
 - Postman - para testes de API
 
 ---
@@ -50,9 +50,9 @@ $ cp .env.example .env
 No arquivo `.env`, configure as variáveis essenciais por ex:
 
 ```env
-DATABASE_URL=URL_DO_SEU_BD
+DATABASE_URL= URL_DO_SEU_BD
 BASE_URL = http://localhost:3000 ou endereço remoto
-LLAMA_API_KEY = SUA_CHAVE_API
+GROQ_API_KEY = SUA_CHAVE_API
 ```
 
 ---

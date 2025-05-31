@@ -10,13 +10,15 @@ import {
 import { UserUseCase } from 'src/aplication/usecases/userUseCase'
 import { CreateUserDTO } from 'src/aplication/dtos/user/createUserDTO'
 import { UserDTO } from 'src/aplication/dtos/user/userDTO'
-
+import { FeedbackAnalysisService } from 'src/persistence/feedbackAnalysisService';
 
 @Controller('users')
 export class UserController {
-    constructor(private readonly userUseCase: UserUseCase) {}
+    constructor(
+      private readonly userUseCase: UserUseCase,
+      private readonly feedbackAnalysisService: FeedbackAnalysisService
+    ) {}
 
-    
   @Post()
   async createUser(@Body() userDTO :CreateUserDTO) {
     try{
@@ -104,4 +106,19 @@ export class UserController {
     }
   }
 
+  @Post('/feedback-analysis')
+  async analisarFeedbacks(@Body() body: { feedbacks: string[] }) {
+    try {
+      const analise = await this.feedbackAnalysisService.analisarFeedbacks(body.feedbacks);
+      return { 
+        statusCode: 200, 
+        data: JSON.parse(analise) 
+      };
+    } catch (error) {
+      return { 
+        statusCode: 500, 
+        message: error.message 
+      };
+    }
+  }
 }
