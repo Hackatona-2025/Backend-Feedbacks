@@ -1,5 +1,5 @@
 import { createId } from "@paralleldrive/cuid2";
-import { User } from './user';
+
 
 interface ProductInterface {
     name: string;

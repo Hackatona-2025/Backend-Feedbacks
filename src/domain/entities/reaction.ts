@@ -1,6 +1,5 @@
 import { createId } from "@paralleldrive/cuid2";
-import { User } from './user';
-import { Feedback } from './feedback';
+
 
 export enum ReactionType {
     THUMBS_UP = 'THUMBS_UP',

@@ -1,5 +1,4 @@
 import { User } from "./user";
-import { Feedbacks } from "./feedback";
 
 interface GroupInterface {
   id: string;
@@ -15,9 +14,6 @@ export class Group implements GroupInterface {
   name: string;
   level: number;
   parentId: string;
-  subGroups: Group[];
-  feedbacks: Feedbacks[];
-  users: User[];
 
   constructor() {
     this.subGroups = [];

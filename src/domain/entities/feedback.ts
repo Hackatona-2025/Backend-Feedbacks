@@ -17,7 +17,7 @@ export class Feedback {
   authorId: string;
   groupId?: string;
   isAnonymous: boolean;
-  reactions: any[]; // Replace 'any' with your Reaction type if available
+  reactions: string[]; // Replace 'any' with your Reaction type if available
 
   constructor(feedback: FeedbackInterface, id?: string) {
     this.id = id || createId();
