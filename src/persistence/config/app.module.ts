@@ -12,10 +12,15 @@ import { PrismaFeedbackRepository } from 'src/persistence/repositories/feedbacks
 import { PrismaReactionRepository } from 'src/persistence/repositories/reaction.repository.impl';
 import { PrismaGroupRepository } from 'src/persistence/repositories/group.repository.impl';
 import { PrismaProductRepository } from 'src/persistence/repositories/product.repository.impl';
+import { UserController } from 'src/persistence/controllers/user.controller';
+import { FeedbackController } from 'src/persistence/controllers/feedback.controller';
+import { ReactionController } from 'src/persistence/controllers/reaction.controller';
+import { ProductController } from 'src/persistence/controllers/product.controller';
+import { GroupController } from 'src/persistence/controllers/groups.controller';
 
 @Module({
   imports: [],
-  controllers: [AppController],
+  controllers: [AppController, UserController,FeedbackController, ReactionController, ProductController, GroupController],
   providers: [AppService, 
     FeedbackUseCase, 
     ReactionUseCase, 
