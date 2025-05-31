@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common'
 import { UserUseCase } from 'src/aplication/usecases/userUseCase'
 import { CreateUserDTO } from 'src/aplication/dtos/user/createUserDTO'
-import { User } from 'src/domain/entities/user'
+import { UserDTO } from 'src/aplication/dtos/user/userDTO'
 
 
 @Controller('users')
@@ -41,8 +41,8 @@ export class UserController {
     }
   }
 
-  @Post('/email')
-  async findByEmail(@Body('email') email: string) {
+  @Get('email/:email')
+  async findByEmail(@Param('email') email: string) {
     try {
       const user = await this.userUseCase.findByEmail(email)
       if (!user) {
@@ -54,7 +54,7 @@ export class UserController {
     }
   }
 
-  @Get('/all')
+  @Post('/all')
   async findAll() {
     try {
       const users = await this.userUseCase.findAll()
@@ -65,9 +65,9 @@ export class UserController {
   }
 
   @Patch()
-  async updateUser(@Body() userDTO: User) {
+  async updateUser(@Body() usera: UserDTO) {
     try {
-      const updatedUser = await this.userUseCase.update(userDTO)
+      const updatedUser = await this.userUseCase.update(usera)
       return { statusCode: 200, data: updatedUser }
     } catch (error) {
       return { statusCode: 500, message: error.message }

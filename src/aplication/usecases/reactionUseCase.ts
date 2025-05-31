@@ -1,5 +1,5 @@
 import { Injectable, Inject} from "@nestjs/common";
-import { Reaction, ReactionType } from "../../domain/entities/reaction";
+import { Reaction, } from "../../domain/entities/reaction";
 import { ReactionRepository } from "src/domain/repositories/reaction.repository";
 import { createReactionDto } from "src/aplication/dtos/reaction/createReactionDto";
 import { ReactionDto } from "src/aplication/dtos/reaction/reactionDto";

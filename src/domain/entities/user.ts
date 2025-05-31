@@ -23,7 +23,7 @@ export class User {
     email: string;
     password: string;
     description: string = "";
-    groupId : string;
+    groupId ?: string;
     coins: number = 0;
     role: Role = Role.USER;
 

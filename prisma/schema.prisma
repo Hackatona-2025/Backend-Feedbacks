@@ -16,7 +16,7 @@ model User {
 
   // Relacionamento many-to-one com Group (opcional)
   group       Group?      @relation(fields: [groupId], references: [id])
-  groupId     String
+  groupId     String?
 
   coins       Int         @default(0)
   role        Role        @default(USER)

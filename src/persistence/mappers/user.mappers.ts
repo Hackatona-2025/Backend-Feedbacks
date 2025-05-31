@@ -9,7 +9,7 @@ export class UserMapper {
             name: prismaUser.name,
             email: prismaUser.email,
             password: prismaUser.password,
-            groupId: prismaUser.groupId,
+            groupId: prismaUser.groupId || "",
         }, prismaUser.id);
         user.setRole(prismaUser.role as Role);
         user.setCoins(prismaUser.coins);
