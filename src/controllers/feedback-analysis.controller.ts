@@ -1,11 +1,11 @@
 import { Controller, Post, Body } from '@nestjs/common';
 import { FeedbackAnalysisService } from '../services/feedback-analysis.service';
 
-@Controller('feedback-analysis')
+@Controller('api/feedback-analysis')
 export class FeedbackAnalysisController {
     constructor(private readonly feedbackAnalysisService: FeedbackAnalysisService) {}
 
-    @Post('analisar')
+    @Post()
     async analisarFeedbacks(
         @Body() body: { feedbacks: string[] }
     ): Promise<string> {
