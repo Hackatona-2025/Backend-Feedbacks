@@ -3,7 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  HttpCode,
   Param,
   Patch,
   Post,
@@ -79,7 +78,7 @@ export class GroupController {
       return { statusCode: 500, message: error.message }
     }
   }
-  
+
 
 
 }
