@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable,Inject } from "@nestjs/common";
 import { User, Role } from "src/domain/entities/user";
 import { UserRepository } from "src/domain/repositories/user.repository";
 import { CreateUserDTO } from "src/aplication/dtos/user/createUserDTO";
@@ -8,7 +8,8 @@ import { UserDTO } from "src/aplication/dtos/user/userDTO";
 
 @Injectable()
 export class UserUseCase {
-    constructor(private readonly userRepository: UserRepository) {}
+    constructor(@Inject('UserRepository')
+    private readonly userRepository: UserRepository) {}
 
     createUser(userDTO: CreateUserDTO): Promise<User> {
         const user = new User({

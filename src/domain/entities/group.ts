@@ -46,7 +46,7 @@ export class Group {
     this.level = value;
   }
 
-  public getParentId(): string {
+  public getParentId(): string | undefined {
     return this.parentId;
   }
 
