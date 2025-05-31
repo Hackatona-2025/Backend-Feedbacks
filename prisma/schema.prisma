@@ -13,3 +13,81 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id          String     @id @default(uuid())
+  name        String
+  email       String     @unique
+  password    String
+  description String
+  group       Group?     @relation(fields: [groupId], references: [id])
+  groupId     String?
+  coins       Int        @default(0)
+  role        Role       @default(USER)
+  feedbacks   Feedback[] @relation("AuthorFeedbacks")
+  reactions   Reaction[]
+  products    Product[]
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model Group {
+  id        String     @id @default(uuid())
+  name      String
+  users     User[]
+  feedbacks Feedback[] @relation("GroupFeedbacks")
+  level     Int        @default(0)
+
+  parent    Group?     @relation("Subgroups", fields: [parentId], references: [id])
+  parentId  String?
+  subgroups Group[]    @relation("Subgroups")
+}
+
+model Feedback {
+  id          String     @id @default(uuid())
+  content     String
+  file        String?
+  createdAt   DateTime   @default(now())
+  reportCount Int        @default(0)
+
+  author      User       @relation("AuthorFeedbacks", fields: [authorId], references: [id])
+  authorId    String
+
+  group       Group?     @relation("GroupFeedbacks", fields: [groupId], references: [id])
+  groupId     String?
+
+  isAnonymous Boolean    @default(false)
+  reactions   Reaction[]
+}
+
+model Reaction {
+  id         Int          @id @default(autoincrement())
+  feedback   Feedback     @relation(fields: [feedbackId], references: [id])
+  feedbackId String
+  user       User         @relation(fields: [userId], references: [id])
+  userId     String
+  type       ReactionType
+  createdAt  DateTime     @default(now())
+}
+
+enum ReactionType {
+  THUMBS_UP
+  THUMBS_DOWN
+  LIGHT_BULB
+  SAD_FACE
+  THUNDER
+}
+
+model Product {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  image       String?
+  cost        Int
+
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+}
