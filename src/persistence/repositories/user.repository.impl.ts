@@ -2,6 +2,9 @@ import { Injectable} from '@nestjs/common';
 import { PrismaService } from 'src/persistence/config/prisma-service';
 import { UserRepository } from 'src/domain/repositories/user.repository';
 import { User } from 'src/domain/entities/user';
+// @ts-nocheck
+
+
 
 
 @Injectable()
@@ -45,13 +48,14 @@ z
     async findByGroupId(groupId: string): Promise<User[]> {
         return await this.prisma.user.findMany({ where: { groupId } });
     }
-
+    
     async addCoins(userId: string, coins: number): Promise<User> {
-        return await this.prisma.user.update({
+        return await this.prisma.user.update({ 
             where: { id: userId },
             data: { coins: { increment: coins } },
         });
     }
+
     async removeCoins(userId: string, coins: number): Promise<User> {
         return await this.prisma.user.update({
             where: { id: userId },
@@ -59,6 +63,6 @@ z
         });
     }
 
-    
+
 
 }

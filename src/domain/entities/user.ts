@@ -26,7 +26,7 @@ export class User {
     groupId : string;
     coins: number = 0;
     role: Role = Role.USER;
-    
+
     
     constructor(user: UserInterface, id?: string){
         this.id = id || createId();
@@ -36,60 +36,63 @@ export class User {
         this.groupId = user.groupId;
     }
 
-    getId(): string {
+    
+    
+
+    public getId(): string {
         return this.id;
     }
 
-    setId(id: string): void {
+    public setId(id: string): void {
         this.id = id;
     }
 
-    getName(): string {
+    public  getName(): string {
         return this.name;
     }
 
-    setName(name: string): void {
+    public  setName(name: string): void {
         this.name = name;
     }
 
-    getEmail(): string {
+    public  getEmail(): string {
         return this.email;
     }
 
-    setEmail(email: string): void {
+    public  setEmail(email: string): void {
         this.email = email;
     }
 
-    getPassword(): string {
+    public getPassword(): string {
         return this.password;
     }
 
-    setPassword(password: string): void {
+    public setPassword(password: string): void {
         this.password = password;
     }
 
-    getDescription(): string {
+    public getDescription(): string {
         return this.description;
     }
 
-    setDescription(description: string): void {
+    public setDescription(description: string): void {
         this.description = description;
     }
 
 
-    getCoins(): number {
+    public getCoins(): number {
         return this.coins;
     }
 
-    setCoins(coins: number): void {
+    public setCoins(coins: number): void {
         this.coins = coins;
     }
 
-    getRole(): Role {
+    public getRole(): Role {
         return this.role;
     }
 
-    setRole(role: Role): void {
+    public setRole(role: Role): void {
         this.role = role;
     }
 
