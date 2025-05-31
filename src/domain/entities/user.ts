@@ -37,8 +37,6 @@ export class User {
     }
 
     
-    
-
     public getId(): string {
         return this.id;
     }

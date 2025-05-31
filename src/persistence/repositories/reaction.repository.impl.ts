@@ -8,9 +8,10 @@ export class PrismaReactionRepository implements ReactionRepository {
     constructor(private readonly prisma: PrismaService) {}
 
     async create(reaction: Reaction): Promise<Reaction> {
-        return await this.prisma.reaction.create({
+         await this.prisma.reaction.create({
             data: reaction,
         });
+        return reaction;
     }
 
     async findById(id: string): Promise<Reaction | null> {
