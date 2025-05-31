@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { User } from "./user";
+=======
+import { createId } from "@paralleldrive/cuid2"
+>>>>>>> 80b221fd655df083b683123a5f2f2454f9f8b74f
 
 interface GroupInterface {
   id: string;
@@ -15,10 +19,11 @@ export class Group implements GroupInterface {
   level: number;
   parentId: string;
 
-  constructor() {
-    this.subGroups = [];
-    this.feedbacks = [];
-    this.users = [];
+  constructor(group: GroupInterface, id?: string) {
+    this.id = id || createId();
+    this.name = group.name;
+    this.level = group.level;
+    this.parentId = group.parentId;
   }
 
   getId(): string {
@@ -53,29 +58,6 @@ export class Group implements GroupInterface {
     this.parentId = value;
   }
 
-  getSubGroups(): Group[] {
-    return this.subGroups;
-  }
-
-  setSubGroups(value: Group[]) {
-    this.subGroups = value;
-  }
-
-  getFeedbacks(): Feedbacks[] {
-    return this.feedbacks;
-  }
-
-  setFeedbacks(value: Feedbacks[]) {
-    this.feedbacks = value;
-  }
-
-  getUsers(): User[] {
-    return this.users;
-  }
-
-  setUsers(value: User[]) {
-    this.users = value;
-  }
 
   toJSON() {
     return {
@@ -83,9 +65,6 @@ export class Group implements GroupInterface {
       name: this.name,
       level: this.level,
       parentId: this.parentId,
-      subGroups: this.subGroups.map(group => typeof group === 'object' && 'toJSON' in group ? group.toJSON() : group),
-      feedbacks: this.feedbacks.map(feedback => typeof feedback === 'object' && 'toJSON' in feedback ? feedback.toJSON() : feedback),
-      users: this.users.map(user => typeof user === 'object' && 'toJSON' in user ? user.toJSON() : user)
     };
   }
 }
